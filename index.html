@@ -35,12 +35,13 @@
     var map = new H.Map(
         document.getElementById('maps'),
         /*(定義基本的呈現) default the lays*/
-        defaultLayers.normal.map, {
+        defaultLayers.raster.normal.map, {
             zoom: 13,
             center: {
                 lat: 25.035078,
                 lng: 121.53655048
             }
+            pixelRatio: window.devicePixelRatio || 1
         });
 
     //使地圖能pan / drag ; create the listener for map interactive
