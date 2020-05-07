@@ -2,27 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>TWN A3DCM</title>
-    <meta name="viewport" content="initial-scale=1.0,width=device-width" />
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-core-legacy.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-service-legacy.js" type="text/javascript" charset="utf-8"></script>
+    <title>Maps API for JavaScript</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1526040296" />
+    <script src="http://js.cit.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.cit.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <!-- for interactive map  -->
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://js.cit.api.here.com/v3/3.0/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
     <!-- for StreetLevel -->
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="http://js.cit.api.here.com/v3/3.0/mapsjs-pano.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.js"></script>
 </head>
 
 <body>
     <div id='maps' style="width: 100%;height:600px"></div>
     <script type="text/javascript" charset="utf-8">
     var platform = new H.service.Platform({
-        //'app_id': 'OpnOeeAkAALSVSlPWcsf',,
-        //'app_code': '_Bi6G3bqymSbOGwt2YYM2g',     
-        'apikey': '97jX-h4M8xWR3EQa94nfFzJXXTDJDBUZZMW411JISW4'
-        //'useHTTPS' : true,
+        'app_id': 'OpnOeeAkAALSVSlPWcsf',
+        'app_code': '_Bi6G3bqymSbOGwt2YYM2g'
+        //'apikey': 'WrZ-xEhamFv0aNNN-ovG4rSXkVeo5RvmMthl-Qul0oc'
 
     });
 
@@ -35,13 +33,12 @@
     var map = new H.Map(
         document.getElementById('maps'),
         /*(定義基本的呈現) default the lays*/
-        defaultLayers.raster.normal.map, {
-            zoom: 13,
+        defaultLayers.normal.map, {
+            zoom: 12,
             center: {
                 lat: 25.035078,
                 lng: 121.53655048
-            },
-            pixelRatio: window.devicePixelRatio || 1
+            }
         });
 
     //使地圖能pan / drag ; create the listener for map interactive
@@ -70,9 +67,9 @@
       - map / traffic / panorama / transit / xbase / base / labels ; 
       - incidents / venues
     */
-    //map.setBaseLayer(defaultLayers.normal.map);
+    map.setBaseLayer(defaultLayers.normal.map);
     //增加圖層的方式
-    //map.addLayer(defaultLayers.venues);
+    map.addLayer(defaultLayers.venues);
     //map.addLayer(defaultLayers.incidents);
 
     //設定地圖中心點
@@ -1429,9 +1426,11 @@ function addXiZhiPolygonToMap(map) {
 }
 // Now use the map as required...
 addXiZhiPolygonToMap(map); 
-        
-        
-        function addTaoYuanPolygonToMap(map) {
+
+
+
+
+function addTaoYuanPolygonToMap(map) {
   var lineString = new H.geo.LineString(
   	[24.9719986968042 , 121.273800506037 , 100 ,
 24.9752510099587 , 121.270772305978 , 100 ,
@@ -1635,7 +1634,38 @@ addXiZhiPolygonToMap(map);
 // Now use the map as required...
 addTaoYuanPolygonToMap(map); 
 
-        
+
+function addRectangleNewTaipeiToMap(map) {
+  var boundingBox = new H.geo.Rect(25.0989334668912, 121.403191564364
+, 24.98336886584, 121.53008866486);
+  map.addObject(
+    new H.map.Rect(boundingBox, {
+      style: {
+        //fillColor: '#FFFFCC',
+        strokeColor: '#988',
+        lineWidth: 2
+      },
+    })
+  );
+}
+
+addRectangleNewTaipeiToMap(map);  
+
+function addRectangleTaipeiToMap(map) {
+  var boundingBox = new H.geo.Rect(25.0821948338997, 121.483892806355
+, 25.0063571583486, 121.575087701028);
+  map.addObject(
+    new H.map.Rect(boundingBox, {
+      style: {
+        //fillColor: '#FFFFCC',
+        strokeColor: 'Red',
+        lineWidth: 2
+      },
+    })
+  );
+}
+
+addRectangleTaipeiToMap(map);  
 
     </script>
 </body>
