@@ -1667,6 +1667,73 @@
     }
 
     addRectangleTaipeiToMap(map);
+        
+         addRectangleXiZhiToMap(map);
+
+    function addRectangleXiZhiToMap(map) {
+        var boundingBox = new H.geo.Rect(25.1020533743533, 121.61600146113, 25.0370513572281, 121.691348537728);
+        map.addObject(
+            new H.map.Rect(boundingBox, {
+                style: {
+                    fillColor: 'rgba(106,90,205,0.4)',
+                    strokeColor: 'rgb(0, 0, 0)',
+                    lineWidth: 2
+                },
+            })
+        );
+    }
+    addRectangleXiZhiToMap(map);
+
+
+    function addRectangleTaoYuanToMap(map) {
+        var boundingBox = new H.geo.Rect(25.026505504650, 121.194511416954, 24.9362083681732, 121.357002745594);
+        map.addObject(
+            new H.map.Rect(boundingBox, {
+                style: {
+                    fillColor: 'rgba(106,90,205,0.4)',
+                    strokeColor: 'rgb(0, 0, 0)',
+                    lineWidth: 2
+                },
+            })
+        );
+    }
+    addRectangleTaoYuanToMap(map);
+
+
+
+    function addRectangleTaiChungToMap(map) {
+        var boundingBox = new H.geo.Rect(24.1659764046986, 120.622046031412, 24.1045768540832, 120.704706226415);
+        map.addObject(
+            new H.map.Rect(boundingBox, {
+                style: {
+                    fillColor: 'rgba(255, 0, 0, 0.4)',
+                    strokeColor: 'rgb(0, 0, 0)',
+                    lineWidth: 2
+                },
+            })
+        );
+    }
+    addRectangleTaiChungToMap(map);
+
+
+
+
+    function addRectangleKaohsiungToMap(map) {
+        var boundingBox = new H.geo.Rect(22.6532808503821, 120.2585931000754, 22.570196641706, 120.344210768209);
+        map.addObject(
+            new H.map.Rect(boundingBox, {
+                style: {
+                    fillColor: 'rgba(128, 255, 0, 0.4)',
+                    strokeColor: 'rgb(0,0,0)',
+                    lineWidth: 2
+                },
+            })
+        );
+    }
+
+    addRectangleKaohsiungToMap(map);
+        
+        
     </script>
 </body>
 
